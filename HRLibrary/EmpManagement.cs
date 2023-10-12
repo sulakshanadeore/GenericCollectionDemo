@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,10 +10,10 @@ namespace HRLibrary
 {
     public class EmpManagement
     {
-        static List<Employee> emplist = new List<Employee>();
+          static List<Employee> emplist = new List<Employee>();
         public EmpManagement()
         {
-            //Populating the data
+            ////Populating the data
             Employee e = new Employee();
             e.Empid = 1;
             e.Ename = "Raj";
@@ -58,6 +60,34 @@ namespace HRLibrary
             }
             return null;
             
+        
+        }
+
+        public void AddEmployeeToList(Employee emp)
+        { 
+        emplist.Add(emp);
+        
+        }
+
+        public int RemoveEmployeeFromList(int empid)
+        {
+            int countRemoved=emplist.RemoveAll(emptoRemove => emptoRemove.Empid == empid);
+
+            return countRemoved;
+
+        }
+
+        public void UpdateEmployeeDatainList(Employee newdata)
+        { 
+        Employee found=emplist.Find(e=>e.Empid==newdata.Empid);
+            found.Ename=newdata.Ename;
+            found.Salary = newdata.Salary;
+            found.Deptno=newdata.Deptno;
+
+            
+            
+
+
         
         }
 

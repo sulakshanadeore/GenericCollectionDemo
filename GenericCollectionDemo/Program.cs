@@ -1,6 +1,7 @@
 ﻿using HRLibrary;
 using System;
 using System.Collections.Generic;
+using System.IO.Pipes;
 using System.Linq;
 using System.Net.Configuration;
 using System.Runtime.CompilerServices;
@@ -10,9 +11,10 @@ namespace GenericCollectionDemo
 {
     internal class Program
     {
-       private static void showList()
+   public   static  EmpManagement mgt = new EmpManagement();
+        private static void showList()
         {
-            EmpManagement mgt=new EmpManagement();
+            
             Console.WriteLine("The employee list");
             List<Employee> emplist = new List<Employee>();
             emplist=mgt.ShowEmployeeList();
@@ -28,7 +30,7 @@ namespace GenericCollectionDemo
 
         private static void FindEmployeeByID() 
         {
-            EmpManagement mgt = new EmpManagement();
+            
             Employee emp = new Employee();
             Console.WriteLine("Enter employeeid");
             emp.Empid=Convert.ToInt32(Console.ReadLine());
@@ -56,40 +58,93 @@ namespace GenericCollectionDemo
         {
             //StackAndQueue();
             //List<int> list = new List<int>();
-            
-            
-            Console.WriteLine("Menu");
-            Console.WriteLine("1.Show All Employees \n2.FindEmployeeById and Name \n3.FindEmployees By Deptno");
 
-            Console.WriteLine( "Enter your choice");
-            int ch=Convert.ToInt32(Console.ReadLine());
-            switch (ch)
+            string ans = null;
+            do
             {
-                case 1:
-                    showList();
-                    break;
+                Console.WriteLine("Menu");
+            Console.WriteLine("1.Show All Employees \n2.FindEmployeeById and Name \n3.FindEmployees By Deptno \n4.Add Employee  \n5.Delete Employee \n6.UpdateEmployeeData \n7.Exit");
+           
 
-                case 2:
-                    FindEmployeeByID();
-                    break;
-                case 3:
-                    EmpManagement mgt = new EmpManagement();
-                    Console.WriteLine(  "Enter deptno");
-                    int deptno=Convert.ToInt32(Console.ReadLine());
-                    List<Employee> EmployeesInDept=mgt.FindEmployeesByDeptno(deptno);
-                    foreach (var item in EmployeesInDept)
-                    {
-                        Console.WriteLine($"EmployeeID={item.Empid}");
-                        Console.WriteLine($"Employee Name={item.Ename}");
-                         Console.WriteLine($"Salary=Rs. {item.Salary}");
-                        Console.WriteLine($"Deptno={item.Deptno}");
-                        Console.WriteLine( "---------");
-                    }
+                Console.WriteLine("Enter your choice");
+                int ch = Convert.ToInt32(Console.ReadLine());
+                switch (ch)
+                {
+                    case 1:
+                        showList();
+                        break;
 
-                    break;
-                default:
-                    break;
+                    case 2:
+                        FindEmployeeByID();
+                        break;
+                    case 3:
+             
+                        Console.WriteLine("Enter deptno");
+                        int deptno = Convert.ToInt32(Console.ReadLine());
+                        List<Employee> EmployeesInDept = mgt.FindEmployeesByDeptno(deptno);
+                        foreach (var item in EmployeesInDept)
+                        {
+                            Console.WriteLine($"EmployeeID={item.Empid}");
+                            Console.WriteLine($"Employee Name={item.Ename}");
+                            Console.WriteLine($"Salary=Rs. {item.Salary}");
+                            Console.WriteLine($"Deptno={item.Deptno}");
+                            Console.WriteLine("---------");
+                        }
+
+                        break;
+                    case 4:
+             
+                        Employee empadd = new Employee();
+                        Console.WriteLine("enter employee id");
+                         empadd.Empid = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter employee name");
+                        empadd.Ename = Console.ReadLine();
+                        Console.WriteLine("Enter Salary");
+                        empadd.Salary = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter Deptno");
+                        empadd.Deptno = Convert.ToInt32(Console.ReadLine());
+
+                        mgt.AddEmployeeToList(empadd);
+                        Console.WriteLine("Showing the added employee");
+
+                        showList();
+
+
+                        break;
+                    case 5:
+             
+                        Console.WriteLine("Enter the empid to delete");
+                        int empid=Convert.ToInt32(Console.ReadLine());
+                        int c=mgt.RemoveEmployeeFromList(empid);
+                        Console.WriteLine($"Removed {c} employee with employeeid{empid}");
+
+                        break;
+
+                    case 6:
+                      
+                        Employee e1 = new Employee();
+                        Console.WriteLine("enter employee id");
+                        e1.Empid = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter employee name");
+                        e1.Ename = Console.ReadLine();
+                        Console.WriteLine("Enter Salary");
+                        e1.Salary = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter Deptno");
+                        e1.Deptno = Convert.ToInt32(Console.ReadLine());
+
+                        mgt.UpdateEmployeeDatainList(e1);
+
+                        break;
+                    case 7:
+                        Environment.Exit(1);
+                        break;
+
+                }
+                Console.WriteLine(" do u want to continue");
+                ans = Console.ReadLine();
             }
+            while ( ans=="Yes" || ans=="yes");
+            Console.ReadLine();
 
             
         
