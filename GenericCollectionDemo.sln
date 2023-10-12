@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericCollectionDemo", "GenericCollectionDemo\GenericCollectionDemo.csproj", "{499C562E-F50A-4D77-BA3C-BAC0543B239B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1D87E7F4-968C-4325-B4C7-655A3FAB55E0} = {1D87E7F4-968C-4325-B4C7-655A3FAB55E0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRLibrary", "HRLibrary\HRLibrary.csproj", "{1D87E7F4-968C-4325-B4C7-655A3FAB55E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{499C562E-F50A-4D77-BA3C-BAC0543B239B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499C562E-F50A-4D77-BA3C-BAC0543B239B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499C562E-F50A-4D77-BA3C-BAC0543B239B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499C562E-F50A-4D77-BA3C-BAC0543B239B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D87E7F4-968C-4325-B4C7-655A3FAB55E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D87E7F4-968C-4325-B4C7-655A3FAB55E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D87E7F4-968C-4325-B4C7-655A3FAB55E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D87E7F4-968C-4325-B4C7-655A3FAB55E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2191CDB5-99DC-42B6-9B25-025B12150FC6}
+	EndGlobalSection
+EndGlobal
