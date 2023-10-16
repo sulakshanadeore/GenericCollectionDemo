@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>GenericCollectionDemo.IComparerDemo</StartupObject>
+    <StartupObject>GenericCollectionDemo.LinkedListDemo</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HRLibrary">
@@ -50,9 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DictionaryDemo.cs" />
+    <Compile Include="HashTabledemo.cs" />
     <Compile Include="IComparableDemo.cs" />
     <Compile Include="IComparerDemo.cs" />
     <Compile Include="LambdaDemo.cs" />
+    <Compile Include="LinkedListDemo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortedListDemo.cs" />
