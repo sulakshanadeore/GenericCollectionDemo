@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRLibrary
 {
+    //Entity class----properties and validations
     public class Employee
     {
         public Employee()

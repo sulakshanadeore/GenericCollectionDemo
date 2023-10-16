@@ -1,5 +1,6 @@
 ﻿using HRLibrary;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO.Pipes;
 using System.Linq;
@@ -11,10 +12,11 @@ namespace GenericCollectionDemo
 {
     internal class Program
     {
-   public   static  EmpManagement mgt = new EmpManagement();
+   public static    EmpManagement mgt = new EmpManagement();
         private static void showList()
         {
             
+         
             Console.WriteLine("The employee list");
             List<Employee> emplist = new List<Employee>();
             emplist=mgt.ShowEmployeeList();
@@ -64,9 +66,7 @@ namespace GenericCollectionDemo
             {
                 Console.WriteLine("Menu");
             Console.WriteLine("1.Show All Employees \n2.FindEmployeeById and Name \n3.FindEmployees By Deptno \n4.Add Employee  \n5.Delete Employee \n6.UpdateEmployeeData \n7.Exit");
-           
-
-                Console.WriteLine("Enter your choice");
+              Console.WriteLine("Enter your choice");
                 int ch = Convert.ToInt32(Console.ReadLine());
                 switch (ch)
                 {

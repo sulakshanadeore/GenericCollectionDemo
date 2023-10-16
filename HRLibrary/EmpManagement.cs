@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace HRLibrary
 {
+    //SRP---single responsibility principle--donot give multiple jobs to a single class
+    //DataHandling /Data Management
+    //Insert/Update/Delete/FindEmployee/ShowAllEmployees
     public class EmpManagement
     {
-          static List<Employee> emplist = new List<Employee>();
+        //remembered across operations---static list
+           List<Employee> emplist = new List<Employee>();
         public EmpManagement()
         {
             ////Populating the data
@@ -19,9 +23,12 @@ namespace HRLibrary
             e.Ename = "Raj";
             e.Salary = 100000;
             e.Deptno = 20;
+
             emplist.Add(e);
+
             Employee e2 = new Employee(12, "Gauri", 50000, 10);
             emplist.Add(e2);
+
             emplist.Add(new Employee(13, "Koyal", 40000, 10));
             emplist.Add(new Employee { Empid = 14, Ename = "Hari", Deptno = 30, Salary = 60000 });
 
@@ -49,7 +56,9 @@ namespace HRLibrary
 
         public List<Employee> FindEmployeesByDeptno(int deptno)
         {
-            return emplist.FindAll(edata => edata.Deptno == deptno);
+            List<Employee> foundEmployessByDeptno = new List<Employee>();
+            foundEmployessByDeptno= emplist.FindAll(edata => edata.Deptno == deptno);
+            return foundEmployessByDeptno;
         }
 
         public Employee FindEmployee(int empid, string ename)
@@ -79,15 +88,15 @@ namespace HRLibrary
 
         public void UpdateEmployeeDatainList(Employee newdata)
         { 
-        Employee found=emplist.Find(e=>e.Empid==newdata.Empid);
-            found.Ename=newdata.Ename;
-            found.Salary = newdata.Salary;
-            found.Deptno=newdata.Deptno;
 
+            //newdata.Empid,newdata.ename,newdata.sal,newdata.dept
+         //   emplist.Find
+
+        Employee oldDataEmp=emplist.Find(e=>e.Empid==newdata.Empid);
+            oldDataEmp.Ename=newdata.Ename;
+            oldDataEmp.Salary = newdata.Salary;
+            oldDataEmp.Deptno=newdata.Deptno;
             
-            
-
-
         
         }
 

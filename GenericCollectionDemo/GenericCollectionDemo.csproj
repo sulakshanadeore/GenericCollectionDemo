@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>GenericCollectionDemo.Program</StartupObject>
+    <StartupObject>GenericCollectionDemo.DictionaryDemo</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HRLibrary">
@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DictionaryDemo.cs" />
     <Compile Include="LambdaDemo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
