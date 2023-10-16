@@ -1,5 +1,6 @@
 ﻿using HRLibrary;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -51,6 +52,8 @@ namespace GenericCollectionDemo
             }
             Console.WriteLine("---------------------------------");
             //Except means exists in dic, but doesn't exist in second dic
+
+            //key value pairs--dic
             IEnumerable<KeyValuePair<int, string>> exceptObj = dic.Except(second_dic);
             Console.WriteLine("Except Dictionaries");
             foreach (KeyValuePair<int, string> item in exceptObj)
@@ -77,24 +80,50 @@ namespace GenericCollectionDemo
 
             Console.WriteLine(  "Dictionary Employee");
             Dictionary<DateTime, Employee> empdict = new Dictionary<DateTime, Employee>();
-            empdict.Add(new DateTime(2022,02,15), new Employee {Empid=1,Ename="Suraj",Deptno=10,Salary=10000 });
+            empdict.Add(new DateTime(2022,02,15), new Employee {Empid=1,Ename="Suraja",Deptno=10,Salary=10000 });
+             empdict.Add(new DateTime(2021,03,11),new Employee {Empid=2,Ename="Gauri",Deptno=10,Salary=9999 });
+            empdict.Add(new DateTime(2021, 03, 12), new Employee { Empid = 3, Ename = "Simran", Deptno = 10, Salary = 877 });
 
-            Employee emp = new Employee();
-            emp.Empid = 2;
-            emp.Ename = "Gauri";
-            emp.Deptno = 10;
-            emp.Salary = 80000;
-            empdict.Add(new DateTime(2021,03,11),emp);
-            foreach (var item in empdict)
+            Dictionary<DateTime, Employee> empdict1 = new Dictionary<DateTime, Employee>();
+            empdict1.Add(new DateTime(2022, 02, 15), new Employee { Empid = 1, Ename = "Suraj", Deptno = 10, Salary = 10000 });
+            empdict1.Add(new DateTime(2021, 03, 11), new Employee { Empid = 2, Ename = "Gaurish", Deptno = 10, Salary = 9999 });
+            empdict1.Add(new DateTime(2021, 03, 12), new Employee { Empid = 6, Ename = "Ram", Deptno = 10, Salary = 877 });
+
+            IEnumerable<KeyValuePair<DateTime,Employee>> exceptEmployees=empdict.Except(empdict1);
+            
+
+            //IEnumerable<KeyValuePair<DateTime, Employee>> exceptEmployees = empdict.Except(empdict1,(empdict) new IEqualityComparer<Employee> empdata);
+
+            Console.WriteLine("Except employees");
+            Console.WriteLine("datafollows");
+            foreach (var item in exceptEmployees)
             {
-                Console.WriteLine(item.Key + " " + item.Value.Empid + " "+ item.Value.Ename);
+                Console.WriteLine(  item.Key + " " + item.Value.Empid +" " + item.Value.Ename);
             }
-            IOrderedEnumerable<KeyValuePair<DateTime,Employee>> orderedbyJoiningDate =empdict.OrderBy(e => e.Key);
-            Console.WriteLine("Sort on the basis of Datetime");
-            foreach (var item in orderedbyJoiningDate)
-            {
-                Console.WriteLine(item.Key);
-            }
+
+            Console.WriteLine("==================");
+
+
+            //foreach (var item in empdict)
+            //{
+            //    Console.WriteLine(item.Key + " " + item.Value.Empid + " "+ item.Value.Ename);
+            //}
+            //IOrderedEnumerable<KeyValuePair<DateTime,Employee>> orderedbyJoiningDate =empdict.OrderBy(e => e.Key);
+            //Console.WriteLine("Sort on the basis of Datetime");
+            //foreach (var item in orderedbyJoiningDate)
+            //{
+            //    Console.WriteLine(item.Key);
+            //}
+            //not type safe
+            //Hashtable h = new Hashtable();
+            //h.Add(1, "A");
+            //h.Add(2,2);
+
+            ////type safe
+            //Dictionary<int, int> dic1 = new Dictionary<int, int>();
+            //dic1.Add(1,10);
+            //dic1.Add(1, 10);
+
             Console.ReadLine();
 
 
@@ -102,3 +131,4 @@ namespace GenericCollectionDemo
         }
     }
 }
+

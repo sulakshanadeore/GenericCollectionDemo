@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HRLibrary
 {
     //Entity class----properties and validations
-    public class Employee
+    public class Employee:IEqualityComparer<Employee>   
     {
         public Employee()
         {
@@ -26,5 +26,15 @@ namespace HRLibrary
         public int Salary { get; set; }
         public int Deptno { get; set; }
 
+        public bool Equals(Employee x, Employee y)
+        {
+            bool res = x== y;
+            return res;
+        }
+
+        public int GetHashCode(Employee obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
